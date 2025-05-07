@@ -10,6 +10,8 @@ class CharacterAdmin(admin.ModelAdmin):
     search_fields = ('name',)
     list_filter = ('is_home', 'categories')
     filter_horizontal = ('categories',)
+    list_display = ('name', 'is_home', 'image_preview')
+    readonly_fields = ('image_preview',)
 
 class CharacterDetailAdmin(admin.ModelAdmin):
     list_display = ('character', 'title', 'years')

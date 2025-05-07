@@ -114,13 +114,27 @@ USE_I18N = True
 USE_TZ = True
 
 import os
+from pathlib import Path
 from dotenv import load_dotenv
 
 load_dotenv()
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
+# Cloudinary Configuration
+import os
+from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# Base directory setup
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Cloudinary configuration
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
@@ -131,31 +145,18 @@ cloudinary.config(
     api_secret=os.getenv("CLOUDINARY_API_SECRET"),
 )
 
-DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
-
-MEDIA_URL = f'https://res.cloudinary.com/{os.getenv("CLOUDINARY_CLOUD_NAME")}/'
-
-import os
-from pathlib import Path
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-
+# Static files configuration
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-
-MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
+# Media files configuration (using Cloudinary)
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
+MEDIA_URL = f'https://res.cloudinary.com/{os.getenv("CLOUDINARY_CLOUD_NAME")}/'
 
+# Default auto field
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# EMAIL_HOST_PASSWORD = '~8jPjz7I.tL(127*(,'  # Gmail uygulama şifresi
-
-#
 
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
