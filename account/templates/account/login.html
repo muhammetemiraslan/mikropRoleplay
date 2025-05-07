@@ -1,0 +1,27 @@
+{% extends "base.html" %} {% load static %} {% block title %}MikropRp | Login{% endblock %} {% block content %}
+<div class="container d-flex justify-content-center align-items-center login-container" style="height: 85vh">
+	<div class="col-md-5 login-card text-white">
+		<h3 class="text-center mb-4">Giriş Yap</h3>
+		<form method="POST" action="/login/">
+			{% csrf_token %}
+			<div class="mb-3">
+				<label for="email" class="form-label">E-posta</label>
+				<input type="email" class="form-control" id="email" name="email" placeholder="ornek@mail.com" required />
+			</div>
+			<div class="mb-3">
+				<label for="password" class="form-label">Şifre</label>
+				<input type="password" class="form-control" id="password" name="password" placeholder="••••••••" required />
+			</div>
+			<div class="d-grid gap-2">
+				<button type="submit" class="btn btn-success">Giriş Yap</button>
+			</div>
+			<div class="text-center mt-3">
+				<small>
+					Hesabınız yok mu?
+					<a href="{% url 'register' %}" class="text-decoration-none text-info">Kayıt ol</a>
+				</small>
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}

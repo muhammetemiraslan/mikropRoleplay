@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<!-- Container wrapper -->
+	<div class="container">
+		<!-- Navbar brand -->
+		<a class="navbar-brand me-2" href="{% url 'index' %}">
+			<h4>MikropRP</h4>
+			<!-- <img src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp" height="16" alt="MDB Logo" loading="lazy" style="margin-top: -1px" /> -->
+		</a>
+
+		<!-- Toggle button -->
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarButtonsExample" aria-controls="navbarButtonsExample" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<!-- Collapsible wrapper -->
+		<div class="collapse navbar-collapse mx-4" id="navbarButtonsExample">
+			<!-- Left links -->
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'hikayeler' %}">HİKAYELER</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'forum' %}">FORUM</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'technicalSupport' %}">TEKNİK DESTEK</a>
+				</li>
+				{% comment %}
+				<li class="nav-item">
+					<a class="nav-link" href="#">BAĞIŞ</a>
+				</li>
+				{% endcomment %}
+			</ul>
+			<!-- Left links -->
+
+			<div class="d-flex align-items-center">
+				<button data-mdb-ripple-init type="button" class="btn btn-link text-white px-3 me-2 text-decoration-none">
+					<h4 class="mx-2">
+						<span>100</span>
+						<i class="fa-solid fa-users"></i>
+					</h4>
+				</button>
+				{% if user.is_authenticated %}
+				<span class="text-white me-3">{{ user.first_name }} {{ user.last_name }}</span>
+				<a href="{% url 'logout' %}" class="btn btn-outline-light">Çıkış Yap</a>
+				{% else %}
+				<a class="text-decoration-none text-white" href="{% url 'login' %}">
+					<button type="button" class="btn btn-link text-white px-3 me-2 login-btn text-decoration-none">Giriş</button>
+				</a>
+				<a class="text-decoration-none text-white" href="{% url 'register' %}">
+					<button type="button" class="btn btn-light me-3 register-btn">Ücretsiz Kayıt Ol</button>
+				</a>
+				{% endif %}
+			</div>
+		</div>
+		<!-- Collapsible wrapper -->
+	</div>
+	<!-- Container wrapper -->
+</nav>

@@ -1,0 +1,15 @@
+<footer class="bg-dark text-white text-center text-lg-start">
+	<!-- Copyright -->
+	<div class="text-center p-3" style="background-color: #252525; color: #fff">
+		©
+		<span id="currentYear"></span>
+		{% comment %} Copyright: {% endcomment %}
+		Mikrop RolePlay
+	</div>
+	<!-- Copyright -->
+</footer>
+
+<script>
+	// Sayfa yüklendiğinde geçerli yılı otomatik olarak yaz
+	document.getElementById("currentYear").textContent = new Date().getFullYear();
+</script>

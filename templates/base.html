@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="tr">
+	<head>
+		<meta charset="UTF-8" />
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+		<title>{% block title %}mikropRP{% endblock %}</title>
+	</head>
+	<body>
+		<style>
+			html,
+			body {
+				height: 100%;
+			}
+		</style>
+		{% include 'partials/_navbar.html' %}
+
+		<main class="flex-fill">{% block content %} {% endblock %}</main>
+
+		{% comment %} {% include 'partials/_footer.html' %} {% endcomment %}
+		<!-- Tüm sayfa içeriği buraya -->
+		<!-- bootstrap js links -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+		<!-- js links -->
+		<script src="static/js/main.js"></script>
+	</body>
+</html>

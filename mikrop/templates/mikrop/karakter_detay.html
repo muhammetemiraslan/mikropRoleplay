@@ -1,0 +1,37 @@
+{% extends "base.html" %} {% load static %} {% block title %}{{ karakter.name }} MikropRp - Hikaye{% endblock %} {% block content %}
+
+<div class="container mt-4">
+	<h1 class="text-light mb-4 text-center">{{ karakter.title }}</h1>
+	<div class="row" style="height: 100vh">
+		<div class="col-md-6 mb-4 mb-md-0">
+			<img src="{{ karakter.image }}" alt="{{ karakter.name }}" class="img-fluid rounded shadow h-75" />
+		</div>
+		<!-- Sağ sütun: Hikaye -->
+		<div class="col-md-6 text-light">
+			<br />
+			<h3>{{ karakter.full_name }}</h3>
+			<p>{{karakter.years}}</p>
+			<br />
+			{% for story in karakter.story %}
+			<p>{{ story|linebreaksbr }}</p>
+			{% endfor %}
+		</div>
+	</div>
+
+	<div class="row row-cols-1 row-cols-md-3 g-4 mb-4 my-5">
+		{% for karakter in karakterler %}
+		<div class="col">
+			<div class="card h-100 bg-dark text-white border-secondary card-char">
+				<a href="{% url 'karakter_detay' karakter.id %}">
+					<img src="{{ karakter.image.url }}" class="card-img-top" alt="{{ karakter.name }}" />
+				</a>
+				<div class="card-body text-center">
+					<h5 class="card-title">{{ karakter.name }}</h5>
+					<p class="card-text">{{ karakter.detail.years }}</p>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+	{% endblock %}
+</div>
